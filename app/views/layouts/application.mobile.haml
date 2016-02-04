@@ -39,7 +39,10 @@
     / but i do not generate other resolutions
     %link{:rel => "apple-touch-startup-image", :href => image_path("branding/apple-splash1242x2148.png"),
       :media => "(device-width: 414px) and (device-height: 736px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 3)"}
-
+    
+    / javascripts at the bottom
+    = jquery_include_tag
+    
     = render 'layouts/open_graph'
 
     = chartbeat_head_block
@@ -59,6 +62,17 @@
 
     = include_gon(:camel_case => true)
   %body
+    :javascript
+      if (window.navigator.standalone) {
+        $("body").on("click", "a:not(.stream_element .bottom_bar a)",function (event) {
+          var targetURL = $(this).attr("href");
+          // urls with . or / but not // at the begining should be opened in the same windows
+          if (targetURL[0] == "." || (targetURL[0] == "/" && targetURL[1] != "/")) {
+            event.preventDefault();
+            window.location = targetURL;
+          }
+        });
+      }
     #app
       = render "layouts/header"
       - if user_signed_in?
@@ -69,9 +83,9 @@
           %h3
             = t('streams.activity.title')
         = yield
-
-    / javascripts at the bottom
-    = jquery_include_tag
+          
+    / Include javascripts
     = javascript_include_tag "mobile/mobile"
     = load_javascript_locales
     = include_chartbeat
+        
