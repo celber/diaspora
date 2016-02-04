@@ -7,7 +7,7 @@
 #publisher{class: ((aspect == :profile || publisher_open) ? "panel panel-default mention_popup" : "panel panel-default closed")}
   .panel-heading
     %h3.panel-title= title
-  .panel-body
+  .panel-body.content_creation
     = form_for(StatusMessage.new) do |status|
       = status.error_messages
       %params

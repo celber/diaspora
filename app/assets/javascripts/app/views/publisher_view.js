@@ -170,7 +170,7 @@ app.views.Publisher = Backbone.View.extend({
     //add missing mentions at end of post:
     this.handleTextchange();
 
-    var serializedForm = $(evt.target).closest("form").serializeObject();
+    var serializedForm = $("#new_status_message").serializeObject();
     // disable input while posting, must be after the form is serialized
     this.setInputEnabled(false);
 
@@ -322,7 +322,7 @@ app.views.Publisher = Backbone.View.extend({
     //add missing mentions at end of post:
     this.handleTextchange();
 
-    var serializedForm = $(evt.target).closest("form").serializeObject();
+    var serializedForm = $("#new_status_message").serializeObject();
     var photos = this.getUploadedPhotos();
     var mentionedPeople = this.getMentionedPeople(serializedForm);
     var date = (new Date()).toISOString();
