@@ -16,6 +16,7 @@ $light-grey: #ddd;
 $border-grey: $light-grey;
 $border-medium-grey: $medium-gray;
 $border-dark-grey: $text-grey;
+$border-medium-grey: #ccc;
 
 $link-grey: #777;
 $link-disabled-grey: $text-grey;
@@ -26,7 +27,8 @@ $red: #a80000;
 $blue: #3f8fba;
 
 $stream-background: #f0f0f0 !default;
-$sidebars-background: #f0f0f0 !default;
+$main-background: #f0f0f0 !default;
+$sidebars-background: $background-white !default;
 $sidebars-sub-background: darken($sidebars-background, 12%) !default;
 $left-navbar-drawer-background: darken($sidebars-background, 6%);
 

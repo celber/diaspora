@@ -2,11 +2,18 @@
 -#   licensed under the Affero General Public License version 3 or later.  See
 -#   the COPYRIGHT file.
 
-= render 'publisher/publisher', publisher_aspects_for(stream)
+  %h3.stream-title
 
-#gs-shim{:title => popover_with_close_html("3. #{t('.stay_updated')}"), 'data-content' => t('.stay_updated_explanation')}
+.container-fluid.main-stream-publisher
+  .pull-left.hidden-xs
+    = owner_image_link
+  = render "publisher/publisher", publisher_aspects_for(stream)
 
-#main_stream.stream
+- if current_user.getting_started?
+  .stream#main_stream{:title => popover_with_close_html("3. #{t('.stay_updated')}"),
+    "data-content" => t(".stay_updated_explanation")}
+- else
+  .stream#main_stream
 
 #paginate
   %span.loader.hidden
